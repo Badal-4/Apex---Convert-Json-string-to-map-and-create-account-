@@ -1,0 +1,39 @@
+public class practiceClass 
+{
+    public static void test()
+    {
+              String jsonInput = '{\n' +
+    ' "description" :"An appliance",\n' +
+    ' "accessories" : [ "powerCord", ' + 
+      '{ "right":"door handle1", ' + 
+        '"left":"door handle2" } ],\n' +
+    ' "dimensions" : ' + 
+      '{ "height" : 5.5 , ' + 
+        '"width" : 3.0 , ' + 
+        '"depth" : 2.2 },\n' +
+    ' "type" : null,\n' +
+    ' "inventory" : 2000,\n' +
+    ' "price" : 1023.45,\n' +
+    ' "isShipped" : true,\n' +
+    ' "name" : "test008"\n' +
+    
+    '}';
+       
+        
+        Map<String,Object> accMap = (Map<String,Object>) JSON.deserializeUntyped(jsonInput);
+        List<Account> accList = new List<Account>();
+       
+        if(!accMap.isEmpty())
+        {
+            Account acc = new Account();
+            acc.Name = String.valueOf(accMap.get('name'));
+            acc.Description = String.valueOf(accMap.get('description'));
+            accList.add(acc);
+        }
+        if(!accList.isEmpty())
+        {
+            insert accList;
+        }
+        
+    }
+}
